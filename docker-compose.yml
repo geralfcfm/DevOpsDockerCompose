@@ -3,8 +3,14 @@ services:
     image: geralfcfm/geral-datanotebook
     ports:
       - "8888:8888"
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      #my image already does not asks for password so I do not have to configure it here
 
   spark:
     image: quay.io/jupyter/pyspark-notebook
     ports:
       - "8889:8888"
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    command: jupyter lab --NotebookApp.token='' --NotebookApp.password=''
